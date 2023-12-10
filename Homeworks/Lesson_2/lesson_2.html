@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
+    <main id="target" class="target" name="target"></main>
+    <article></article>
+    <footer></footer>
+    <script>
+      /*
+       Необходимо найти и записать в переменную узел-элемент <main></main> всеми возможными способами
+
+       Например :
+
+       const main1 = "Ваш код"
+       console.log('main1', main1);  // output: "main1" <main id="target" class="target" name="target"></main>
+
+       const main2 = ...
+       console.log('main2', main2);  // output: "main2" <main id="target" class="target" name="target"></main>
+
+       и т. д.
+
+       Важно : Если решаем идти по узлам с корня документа, то идем только по кратчайшему пути
+      */
+     
+      const main = [
+        document.getElementById("target"),
+        document.getElementsByClassName("target")[0],
+        document.getElementsByName("target")[0],
+        document.getElementsByTagName("main")[0],
+
+        document.querySelectorAll(".target")[0],
+        document.querySelectorAll("#target")[0],
+        document.querySelectorAll('[name="target"]')[0],
+        document.querySelectorAll('[id="target"]')[0],
+        document.querySelectorAll('[class="target"]')[0],
+        document.querySelectorAll("main")[0],
+        document.querySelectorAll("main.target")[0],
+        document.querySelectorAll("body main.target")[0],
+
+        document.querySelector(".target"),
+        document.querySelector("#target"),
+        document.querySelector('[name="target"]'),
+        document.querySelector('[id="target"]'),
+        document.querySelector('[class="target"]'),
+        document.querySelector("main"),
+        document.querySelector("main.target"),
+        document.querySelector("body main.target"),
+
+        document.body.childNodes[3],
+        document.body.children[1],
+        document.body.firstElementChild.nextElementSibling,
+        document.documentElement.lastChild.childNodes[3],
+        document.documentElement.lastChild.children[1],
+        document.documentElement.lastChild.firstElementChild.nextElementSibling,
+        document.documentElement.childNodes[2].childNodes[3],
+        document.documentElement.childNodes[2].children[1],
+        document.documentElement.childNodes[2].firstElementChild.nextElementSibling,
+        document.documentElement.children[1].childNodes[3],
+        document.documentElement.children[1].children[1],
+        document.documentElement.children[1].firstElementChild.nextElementSibling,
+      ];
+
+      main.forEach((element, index) =>
+        console.log(`main${index + 1}`, element)
+      );
+    </script>
+  </body>
+</html>
